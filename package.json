@@ -1,0 +1,30 @@
+{
+  "name": "ecommerce",
+  "version": "1.0.0",
+  "description": "backend de un ecommerce",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "crear:migracion": "prisma migrate dev --create-only",
+    "ejecutar:migraciones": "prisma migrate deploy",
+    "start:dev": "nodemon ./src/server.js",
+    "start": "node ./src/server.js"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "SalvadorCT",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.14",
+    "@types/multer": "^1.4.7",
+    "nodemon": "^2.0.20",
+    "prisma": "^4.4.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1",
+    "multer": "^1.4.5-lts.1"
+  }
+}
