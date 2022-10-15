@@ -1,6 +1,7 @@
 import {Router} from 'express';
-import { subirImagen } from '../controllers/productos.controller.js';
+import { crearProducto, subirImagen } from '../controllers/productos.controller.js';
 import Multer from 'multer';
+import { nanoid } from 'nanoid'
 
 // sirve para indicar el formato el cual se va a tratar el archivo
 // diskStorage > indicar que el archivo se almacenara en el disco
@@ -10,7 +11,9 @@ const almacenamiento = Multer.diskStorage({
         console.log(archivo);
         const{mimetype}=archivo;
         if(mimetype=="image/jpeg" || mimetype=="application/pdf"){
-            cb(null, archivo.originalname);
+            const id = nanoid(5);
+            const nombre = id +'-'+ archivo.originalname;
+            cb(null, nombre);
         }else{
             cb(new Error("Formato no valido"), false);
         }
@@ -34,4 +37,6 @@ productoRouter.post(
     );
 
 
+
+productoRouter.post('/producto', crearProducto);
 
